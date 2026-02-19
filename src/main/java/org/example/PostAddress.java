@@ -2,9 +2,8 @@ package org.example;
 
 import io.restassured.RestAssured;
 
-import static io.restassured.RestAssured.authentication;
 import static io.restassured.RestAssured.given;
-public class Basics {
+public class PostAddress {
 
     public static void main(String[]args)
     {
