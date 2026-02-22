@@ -1,8 +1,9 @@
-package org.example;
+package restAssured;
 
 import io.restassured.RestAssured;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.core.IsEqual.equalTo;
 
 public class AddMed {
 
@@ -15,7 +16,7 @@ public class AddMed {
         //then=validate status code
         RestAssured.baseURI="https://stage-qa.truemedsapi.in";
         given().log().all().queryParam("customerId","51637")
-                .queryParam("pincode","400079")
+                .queryParam("pincode","400072")
                 .queryParam("srcTypeId","303")
                 .queryParam("newAlgo","true")
                 .queryParam("variantId","10")
@@ -32,6 +33,8 @@ public class AddMed {
                 .body("[{\"medicineName\":\"Iodex Balm 40gm\",\"productCode\":\"TM-OINT1-000934\",\"cxAcceptedSubs\":false,\"cxOrgAdded\":false,\"isKeepOrg\":false,\"quantity\":3}]")
                 .when().post("OrderManagementService/v1/saveMedsAndCreateOrder")
                 .then().log().all().assertThat().statusCode(200);
+
+
 
 
 
