@@ -1,6 +1,7 @@
 package files;
 
 import io.restassured.path.json.JsonPath;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
@@ -16,15 +17,16 @@ public class Sumvalidation {
         for (int i=0;i<count;i++) {
             int prices = js.getInt("courses[" + i + "].price");
             int amount = js.getInt("courses[" + i + "].copies");
-            sum = prices * amount;
+            int total = prices * amount;
+            sum=total+sum;
             System.out.println(sum);
         }
-            System.out.println("Sum of all");
             int purchase= js.getInt("dashboard.purchaseAmount");
-            int SumAll = sum+purchase;
-            System.out.println(SumAll);
+            Assert.assertEquals(sum,purchase);
+
+             }
         }
 
 
-    }
+
 
